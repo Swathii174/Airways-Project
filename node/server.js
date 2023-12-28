@@ -62,7 +62,7 @@ server.get("/getDestination", (req, res) => {
     var sql = "SELECT * FROM destinations";
     db.query(sql, function (error, result) {
         if (error) {
-            console.log("Table dosent exist");
+            console.log("Table dosen't exist");
         }
         else {
             res.send({ status: true, data: result });
