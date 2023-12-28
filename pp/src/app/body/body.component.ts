@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
+import {BodyService} from './body.service'
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -14,8 +15,8 @@ export class BodyComponent implements OnInit {
     { name: "one-way", val: "1" }, { name: "round-trip", val: "2" }, { name: "multi-city", val: "3" }
   ]
   destination: any;
-  constructor(private form: FormBuilder, public dialog: MatDialog, private http: HttpClient) {
-    this.getDestinations()
+  constructor(private form: FormBuilder, public dialog: MatDialog,private bodyService:BodyService) {
+    // this.getDestinations()
   }
   swathiForm = this.form.group({
     from: [''],
@@ -25,21 +26,27 @@ export class BodyComponent implements OnInit {
     radioButton: [''],
   })
 
-  ngOnInit(): void {
+  async ngOnInit(){
+
+    await this.bodyService.getDestinations().subscribe(
+      async (response: any) => {
+        this.destination = response['data']
+     },
+    )
 
 
   }
 
-  getDestinations() {
+  // getDestinations() {
 
-    this.http.get("http://localhost:8085/getDestination")
-      .subscribe((resultDate: any) => {
-        console.log(resultDate.data);
-        this.destination = resultDate.data;
-      });
+  //   this.http.get("http://localhost:8085/getDestination")
+  //     .subscribe((resultDate: any) => {
+  //       console.log(resultDate.data);
+  //       this.destination = resultDate.data;
+  //     });
 
 
-  }
+  // }
 
 
 

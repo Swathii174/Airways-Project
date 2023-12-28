@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { HttpClient } from '@angular/common/http';
+import {BodyService} from '../body/body.service'
 export interface DialogData {
   dataFromSwathiForm: any;
   text: any;
@@ -19,20 +19,19 @@ export class DialogBoxComponent implements OnInit {
   travellers: any
   flights: any
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private http: HttpClient
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private bodyService:BodyService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(){
 
     this.from = this.data.dataFromSwathiForm.get("from").value
     this.too = this.data.dataFromSwathiForm.get("to").value
 
-
-    this.http.get("http://localhost:8085/getFlights")
-      .subscribe((resultDate: any) => {
-        console.log(resultDate.data);
-        this.flights = resultDate.data;
-      });
+      await this.bodyService.getFlights().subscribe(
+        async (response: any) => {
+          this.flights = response['data']
+       },
+      )
 
   }
 

@@ -58,7 +58,7 @@ server.listen(8085, function check(error) {
 
 //view the record 
 
-server.get("/getDestination", (req, res) => {
+server.post("/getDestination", (req, res) => {
     var sql = "SELECT * FROM destinations";
     db.query(sql, function (error, result) {
         if (error) {
@@ -71,7 +71,7 @@ server.get("/getDestination", (req, res) => {
 });
 
 // flights 
-server.get("/getFlights", (req, res) => {
+server.post("/getFlights", (req, res) => {
     var sql = "SELECT * FROM flights";
     db.query(sql, function (error, result) {
         if (error) {
