@@ -1,0 +1,42 @@
+<div class="row " style="height: 100%;">
+    <div class="col-12 border border-light box overflow-auto"
+        style="margin-top: 30px; color: black;">
+        <div *ngFor="let i of flights">
+            <div
+                *ngIf="((i.from==from) && (i.to==too)) || ((i.from==from) || (i.to==too))">
+                <mat-card class="mi" style="margin-top: 2vh;">
+                    <mat-card-header>
+                        <!-- <mat-card-title> Flight Name : {{i.fname}} </mat-card-title> -->
+                    </mat-card-header>
+                    <div class="row justify-content-between">
+                        <div class="col-10">
+                            <b>From : </b> {{i.from}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>|------------------------ {{i.from}} ------------------------|</b>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>To : </b> {{i.to}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>Departure Time : </b>{{i.time}}&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>Cost : </b>{{i.price}}
+                        </div>
+                        <div class="col-2" style="top: -20px;">
+                            <button class=" btn btn-danger " value="Boooooook Now...">
+                                Book Now...
+                            </button>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- <div *ngFor="let singleItem of flights">
+    <div *ngIf="singleItem.from==from && singleItem.to==too">
+        <span>From:{{singleItem.from}} </span>
+        <span>To:{{singleItem.to}}</span>
+       <span>Price:{{singleItem.price}}</span>
+       <span>Time:{{singleItem.time}}</span>
+    </div>
+</div> -->
