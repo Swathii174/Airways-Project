@@ -83,3 +83,23 @@ server.post("/getFlights", (req, res) => {
     });
 });
 
+
+//checkuser
+server.post("/checkUser", (req, res) => {
+    let username = req.body.username
+    let password = req.body.password
+    var sql = "SELECT is_active FROM users WHERE username=? AND password=?";
+    db.query(sql, [username, password], function (error, result) {
+        if (error) {
+            console.log(error);
+            res.send({ status: false });
+        }
+        else {
+            if (result.length > 0)
+                res.send({ status: true, data: result, messageType: "S" });
+            else
+                res.send({ status: true, messageType: "E" });
+        }
+    });
+});
+

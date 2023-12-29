@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="curved">
   <br />
   <h2>Book Domestic and International Flight Tickets</h2>
@@ -9,7 +10,7 @@
           <br />
 
           <div class="d-flex justify-content-between">
-            <mat-radio-group aria-label="Select an option"  formControlName="radioButton">
+            <mat-radio-group aria-label="Select an option" formControlName="radioButton">
               <!-- <div *ngFor="let single of arr">
                 <mat-radio-button value="{{ single.val }}">
                   {{ single.name }}</mat-radio-button
@@ -33,12 +34,12 @@
                 <mat-card-content> -->
               <mat-form-field floatLabel="always" appearance="outline">
                 <mat-label style="font-weight: bold"> From</mat-label>
-              
+
                 <mat-select formControlName="from">
-                  <div  *ngFor="let a of destination" >
-                  <mat-option value="{{a.destination}}"> {{a.destination}}</mat-option>
-                </div>
-                </mat-select >
+                  <div *ngFor="let a of destination">
+                    <mat-option value="{{a.destination}}"> {{a.destination}}</mat-option>
+                  </div>
+                </mat-select>
               </mat-form-field>
               <!-- </mat-card-content>
               </mat-card> -->
@@ -47,10 +48,10 @@
               <mat-form-field floatLabel="always" appearance="outline">
                 <mat-label style="font-weight: bold"> To</mat-label>
                 <mat-select formControlName="to">
-                  <div  *ngFor="let a of destination" >
-                  <mat-option value="{{a.destination}}"> {{a.destination}}</mat-option>
-                </div>
-                </mat-select >
+                  <div *ngFor="let a of destination">
+                    <mat-option value="{{a.destination}}"> {{a.destination}}</mat-option>
+                  </div>
+                </mat-select>
               </mat-form-field>
             </div>
             <div class="col">
@@ -58,11 +59,9 @@
                 <mat-card-content> -->
               <mat-form-field floatLabel="always" appearance="outline">
                 <mat-label style="font-weight: bold">DEPATURE</mat-label>
-                <input matInput [matDatepicker]="myDatePicker" formControlName="fromDate" (dateChange)="dateChanged($event)" />
-                <mat-datepicker-toggle
-                  [for]="myDatePicker"
-                matSuffix
-                ></mat-datepicker-toggle>
+                <input matInput [matDatepicker]="myDatePicker" formControlName="fromDate"
+                  (dateChange)="dateChanged($event)" />
+                <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                 <mat-datepicker #myDatePicker></mat-datepicker>
               </mat-form-field>
               <!-- </mat-card-content>
@@ -71,17 +70,11 @@
             <div class="col">
               <!-- <mat-card>
                 <mat-card-content> -->
-              <mat-form-field
-                floatLabel="always"
-                appearance="outline"
-                *ngIf="swathiForm.get('radioButton')!.value==2"
-              >
+              <mat-form-field floatLabel="always" appearance="outline">
                 <mat-label style="font-weight: bold"> RETURN </mat-label>
-                <input matInput [matDatepicker]="myDateReturn" formControlName="Date" (dateChange)="dateChanged($event)"/>
-                <mat-datepicker-toggle
-                  [for]="myDateReturn" 
-                  matSuffix
-                ></mat-datepicker-toggle>
+                <input matInput [matDatepicker]="myDateReturn" formControlName="Date" (dateChange)="dateChanged($event)"
+                  [disabled]="isDisabled" />
+                <mat-datepicker-toggle [for]="myDateReturn" matSuffix></mat-datepicker-toggle>
                 <mat-datepicker #myDateReturn></mat-datepicker>
               </mat-form-field>
               <!-- </mat-card-content>
@@ -89,15 +82,13 @@
             </div>
             <div class="col">
               <mat-form-field appearance="outline">
-                <mat-label style="font-weight: bold" appearance="outline" floatLabel="always"
-                  >TRAVELLERS </mat-label
-            >
-                <mat-select >
-                  <mat-option value="One" > One</mat-option>
+                <mat-label style="font-weight: bold" appearance="outline" floatLabel="always">TRAVELLERS </mat-label>
+                <mat-select>
+                  <mat-option value="One"> One</mat-option>
                   <mat-option value="Two">Two</mat-option>
                   <mat-option value="Three"> Three</mat-option>
                   <mat-option value="Four"> Four</mat-option>
-                </mat-select >
+                </mat-select>
               </mat-form-field>
             </div>
           </div>
@@ -110,9 +101,9 @@
               <mat-radio-button value="1"> Regular &nbsp; </mat-radio-button>
               <mat-radio-button value="2"> Student</mat-radio-button>
             </mat-radio-group>
-          </div> 
+          </div>
           <div class="submit">
-            <button mat-raised-button  (click)="displayTicket()"> SUBMIT </button>
+            <button mat-raised-button (click)="displayTicket()"> SUBMIT </button>
           </div>
         </mat-card-content>
       </mat-card>

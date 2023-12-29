@@ -16,4 +16,11 @@ export class BodyService {
   getFlights = () => {
     return this.http.post("http://localhost:8085/getFlights", {});
   }
+
+  checkUser = (username: any, password: any) => {
+    return this.http.post("http://localhost:8085/checkUser", {
+      username: username,
+      password: password
+    });
+  }
 }

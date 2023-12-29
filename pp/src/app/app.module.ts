@@ -18,13 +18,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BodyComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    LoginpageComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatSelectModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

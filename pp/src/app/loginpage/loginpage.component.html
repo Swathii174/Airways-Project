@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center" style="height:58vh; ">
+        <div class="row d-flex justify-content-center " style="margin-top: 20px;">
+        </div>
+        <mat-card style="height: fit-content; width: 35%; margin-top: 100px;">
+            <mat-card-content>
+                <div [formGroup]="loginForm" class="row">
+                    <mat-card-header style="margin-left: 150px; color:dimgray "> <b>Sign Up</b></mat-card-header>
+                    <div class="row"> <br></div>
+                    <div class="row">
+                        <mat-form-field floatLabel="always" appearance="outline">
+                            <mat-label style="font-weight: bold"> USERNAME </mat-label>
+                            <input matInput placeholder="Username" formControlName="username">
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="outline" floatLabel="always">
+                            <mat-label style="font-weight: bold"> Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <span style="margin-left: 300px; "> <a href="Create new user">
+                                <p> Create new user</p>
+                            </a> </span>
+                    </div>
+                    <div class="row">
+                        <button mat-raised-button color="warn" style="width: 100px; margin-left: 170px;"
+                            (click)="login()"> SUBMIT
+                        </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
