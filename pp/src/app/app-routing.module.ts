@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { BodyComponent } from './body/body.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,10 @@ const routes: Routes = [
   },
   {
     path: 'searchFlights', component: BodyComponent
+  },
+  {
+    path: 'newUser', component: NewUserComponent
   }
-
 ];
 
 @NgModule({

@@ -103,3 +103,23 @@ server.post("/checkUser", (req, res) => {
     });
 });
 
+// createNewUser
+server.post("/createNewUser", (req, res) => {
+    let name = req.body.name
+    let mobileNo = req.body.mobileNo
+    let username = req.body.username
+    let password = req.body.password
+
+    var sql = "INSERT INTO users( username, password, name, phone) VALUES (?,?,?,?) ";
+    db.query(sql, [username, password, name, mobileNo], function (error, result) {
+        if (error) {
+            console.log(error);
+            res.send({ status: false, messageType: "E", message: "Check The Inserted Values" });
+        }
+        else {
+            res.send({ status: true, messageType: "S", message: "User Created Succesfully" });
+        }
+    });
+
+});
+

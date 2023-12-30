@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NewUserComponent } from './new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HeaderComponent,
     BodyComponent,
     DialogBoxComponent,
-    LoginpageComponent
+    LoginpageComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,

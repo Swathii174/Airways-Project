@@ -23,4 +23,12 @@ export class BodyService {
       password: password
     });
   }
+  createNewUser = (name: any, mobileNo: any, username: any, password: any) => {
+    return this.http.post("http://localhost:8085/createNewUser", {
+      name: name,
+      mobileNo: mobileNo,
+      username: username,
+      password: password
+    });
+  }
 }

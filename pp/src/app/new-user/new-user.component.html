@@ -4,12 +4,18 @@
         </div>
         <mat-card style="height: fit-content; width: 35%; margin-top: 100px;">
             <mat-card-content>
-                <div [formGroup]="loginForm" class="row">
-                    <mat-card-header style="margin-left: 150px; color:dimgray "> <b>Login </b></mat-card-header>
+                <div [formGroup]="newUserForm" class="row">
+                    <mat-card-header style="margin-left: 150px; color:dimgray "> <b>Sign Up</b></mat-card-header>
                     <div class="row"> <br></div>
                     <div class="row">
                         <mat-form-field floatLabel="always" appearance="outline">
-                            <mat-label style="font-weight: bold"> USERNAME </mat-label>
+                            <mat-label style="font-weight: bold"> Name </mat-label>
+                            <input matInput placeholder="Name" formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field floatLabel="always" appearance="outline">
+                            <mat-label style="font-weight: bold"> Username </mat-label>
                             <input matInput placeholder="Username" formControlName="username">
                         </mat-form-field>
                     </div>
@@ -24,12 +30,14 @@
                         </mat-form-field>
                     </div>
                     <div class="row">
-                        <span style="margin-left: 300px; "> <a [routerLink]="['/newUser']">Create new user</a>
-                        </span>
+                        <mat-form-field floatLabel="always" appearance="outline">
+                            <mat-label style="font-weight: bold"> Mobile No.</mat-label>
+                            <input matInput placeholder="Mobile No." formControlName="mobileNo">
+                        </mat-form-field>
                     </div>
                     <div class="row">
                         <button mat-raised-button color="warn" style="width: 100px; margin-left: 170px;"
-                            (click)="login()"> SUBMIT
+                            (click)="createAccount()"> SUBMIT
                         </button>
                     </div>
                 </div>
