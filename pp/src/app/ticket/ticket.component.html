@@ -1,0 +1,103 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <mat-card layout="row" layouy-align="center center"
+                style="height: fit-content;  margin-top: 60px; background-color:beige;
+                background-color:beige;background: url('../assets/images/Flight.jpg') no-repeat center center fixed; background-size: cover; ">
+
+                <mat-card-header style=" background-color:white">
+                    <mat-card-title><mat-icon>flight_takeoff</mat-icon> &nbsp;&nbsp; Boarding Pass</mat-card-title>
+                </mat-card-header>
+                <br>
+                <mat-card-content>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-3">
+                                NAME OF PASSENGER
+                            </div>
+                            <div class="col-3">
+                                FLIGHT
+                            </div>
+                            <div class="col-3">
+                                DATE
+                            </div>
+                            <div class="col-2">
+                                SEAT
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-3">
+                                <p class="fw-bold">{{name}}
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <p class="fw-bold">{{flightName}}
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <p class="fw-bold"> {{date}}
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <p class="fw-bold">24A
+                                </p>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-1">
+                                From :
+                            </div>
+                            <div class="col">
+                                <p class="fw-bold"> &nbsp;{{from}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-1">To :</div>
+                            <div class="col">
+                                <p class="fw-bold"> &nbsp;{{to}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col">
+                                Gate
+                                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                                Boarding Time
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col">
+                                <p class="fw-bold"> B05
+                                    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                    {{time}}
+                                </p>
+                            </div>
+                            Gate closes 20 mintues before depature
+                        </div>
+                    </div>
+                </mat-card-content>
+
+
+                <mat-card-header style=" background-color:white; ">
+                    <mat-icon>language</mat-icon> &nbsp;&nbsp; Air Company
+                </mat-card-header>
+            </mat-card>
+        </div>
+        <div class="col-2">
+
+        </div>
+    </div>
+</div>

@@ -59,10 +59,10 @@
                 <mat-card-content> -->
               <mat-form-field floatLabel="always" appearance="outline">
                 <mat-label style="font-weight: bold">DEPATURE</mat-label>
-                <input matInput [matDatepicker]="myDatePicker" formControlName="fromDate"
+                <input matInput [matDatepicker]="fromDate" formControlName="fromDate"
                   (dateChange)="dateChanged($event)" />
-                <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
-                <mat-datepicker #myDatePicker></mat-datepicker>
+                <mat-datepicker-toggle [for]="fromDate" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #fromDate></mat-datepicker>
               </mat-form-field>
               <!-- </mat-card-content>
               </mat-card> -->
@@ -72,10 +72,10 @@
                 <mat-card-content> -->
               <mat-form-field floatLabel="always" appearance="outline">
                 <mat-label style="font-weight: bold"> RETURN </mat-label>
-                <input matInput [matDatepicker]="myDateReturn" formControlName="Date" (dateChange)="dateChanged($event)"
-                  [disabled]="isDisabled" />
-                <mat-datepicker-toggle [for]="myDateReturn" matSuffix></mat-datepicker-toggle>
-                <mat-datepicker #myDateReturn></mat-datepicker>
+                <input matInput [matDatepicker]="returnDate" formControlName="returnDate"
+                  (dateChange)="dateChanged($event)" [disabled]="isDisabled" />
+                <mat-datepicker-toggle [for]="returnDate" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #returnDate></mat-datepicker>
               </mat-form-field>
               <!-- </mat-card-content>
               </mat-card> -->
@@ -112,3 +112,34 @@
   <!-- <div class="col-1"></div> -->
   <br />
 </div>
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let i of flights">
+      <div *ngIf="((i.from==from) && (i.to==too))">
+        <mat-card class=" mi" style="margin-top: 2vh; ">
+          <mat-card-header>
+            <!-- <mat-card-title> Flight Name : {{i.fname}} </mat-card-title> -->
+          </mat-card-header>
+          <div class="row justify-content-between">
+            <div class="col-10">
+              <b>From : </b> {{i.from}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>|------------------------ {{i.from}} ------------------------|</b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>To : </b> {{i.to}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>Departure Time : </b>{{i.time}}&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>Cost : </b>{{i.price}}
+            </div>
+            <div class="col-2" style="top: -20px;">
+              <button class=" btn btn-danger " value="Book Now..." (click)="showDetails(i)">
+                Book Now...
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+  </div>
+  <br> <br>
+</div>
+<br> <br>

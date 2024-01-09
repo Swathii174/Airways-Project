@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  username: any
   constructor() { }
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('user')
   }
 
 }

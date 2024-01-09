@@ -1,4 +1,5 @@
-<div class="container-fluid">
+<div class="container-fluid"
+    style="background: url('../assets/images/Travel Savvy.jpg') no-repeat center center fixed; background-size: cover; height: 80ch;">
     <div class="row d-flex justify-content-center" style="height:58vh; ">
         <div class="row d-flex justify-content-center " style="margin-top: 20px;">
         </div>
@@ -22,7 +23,8 @@
                     <div class="row">
                         <mat-form-field appearance="outline" floatLabel="always">
                             <mat-label style="font-weight: bold"> Password</mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
+                                formControlName="password">
                             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                 [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -36,7 +38,12 @@
                         </mat-form-field>
                     </div>
                     <div class="row">
-                        <button mat-raised-button color="warn" style="width: 100px; margin-left: 170px;"
+                        <span style="margin-left: 350px; "> <a [routerLink]="['']">Login</a>
+                        </span>
+                    </div>
+
+                    <div class="row">
+                        <button mat-raised-button color="primary" style="width: 100px; margin-left: 170px;"
                             (click)="createAccount()"> SUBMIT
                         </button>
                     </div>

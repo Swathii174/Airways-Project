@@ -22,6 +22,8 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NewUserComponent } from './new-user/new-user.component';
+import { TravellerDetailsComponent } from './traveller-details/traveller-details.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { NewUserComponent } from './new-user/new-user.component';
     BodyComponent,
     DialogBoxComponent,
     LoginpageComponent,
-    NewUserComponent
+    NewUserComponent,
+    TravellerDetailsComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

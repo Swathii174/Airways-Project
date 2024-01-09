@@ -29,6 +29,7 @@ export class LoginpageComponent implements OnInit {
     this.bodyService.checkUser(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value).subscribe(
       async (response: any) => {
         if (response.messageType == 'S') {
+          localStorage.setItem('user', this.loginForm.get('username')?.value);
           this.router.navigate(['searchFlights']);
         }
         else {

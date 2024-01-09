@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql');
+const nodemailer = require('nodemailer');
 const server = express()
 server.use(bodyParser.json());
 
@@ -9,7 +10,6 @@ const cors = require('cors')
 server.use(cors())
 
 // establish d db connection
-
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -25,9 +25,7 @@ db.connect(function (error) {
         console.log("Successfully conndected to db");
     }
 });
-
 // establish d port 
-
 server.listen(8085, function check(error) {
     if (error) {
         console.log("errorr");
@@ -123,3 +121,76 @@ server.post("/createNewUser", (req, res) => {
 
 });
 
+//personalDetails
+server.post("/personalDetails", (req, res) => {
+    let name = req.body.name
+    let emailId = req.body.emailId
+    let mobileNo = req.body.mobileNo
+    let address = req.body.address
+
+    var sql = "INSERT INTO personal_details(name, emailId, mobileNo, address) VALUES (?,?,?,?) ";
+    db.query(sql, [name, emailId, mobileNo, address], function (error, result) {
+        if (error) {
+            console.log(error);
+            res.send({ status: false, messageType: "E", message: "Check The Inserted Values" });
+        }
+        else {
+            res.send({ status: true, messageType: "S", message: " Ticket Booked Succesfully" });
+        }
+    });
+
+});
+
+//set up node mailer
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'yswathi174@gmail.com', // Your Gmail address
+        pass: 'mene zbiu zjdn qsve',       // Your Gmail password
+    },
+});
+
+server.post('/send-email', (req, res) => {
+    let to = req.body.to;
+    let name = req.body.name;
+    let flightName = req.body.flightName;
+    let from = req.body.from;
+    let toLocation = req.body.toLocation;
+    let date = req.body.date;
+    let time = req.body.time;
+
+    // let htmlContent = `<p>Hello ${name},</p>
+    // <p>Your Flight : ${flightName}</p>
+    // <p>Regards,</p>
+    // <p>Your App</p>`
+
+    let mailOptions = {
+        from: 'yswathi174@gmail.com',
+        to: to,
+        subject: "IMPORTANT !! YOUR TRAVEL DETAILS ✈️",
+
+        html: `<h1>Hello ${name} ! ,</h1><br> \
+        <h3>
+        Note : please ensure the necessary travel documents are carried safe and secure and for any further clarifications please contact us </h3><br><br>\
+        <h4>Your Flight Name: ${flightName}\
+        <br><br>\
+        Deapture Date : ${date}\
+        <br><br>\
+        From: ${from}\
+        <br><br>\
+        To: ${toLocation}\
+        <br><br>\
+     
+        Depature Time: ${time}\
+        <br><br>\
+
+        <span style="color:red;"> Thank You 🤗<span>`
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return res.status(500).send(error.toString());
+        }
+
+        res.status(200).send('Email sent: ' + info.response);
+    });
+});
